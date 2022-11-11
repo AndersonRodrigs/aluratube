@@ -1,5 +1,5 @@
 import React from "react"
-import { StyledRegisterVideo } from "./styles"
+import { StyledRegisterVideo } from "./Styles"
 
 function userForm(propsDoForm) {
   const [values, setValues] = React.useState(propsDoForm.initialValues)
