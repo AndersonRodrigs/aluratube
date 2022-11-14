@@ -58,14 +58,20 @@ const StyledHeader = styled.div`
     align-items: center;
     width: 100%;
     padding: 16px 32px;
+    div {
+      a{
+        color: ${({ theme }) => theme.textColorBase || "#222222"};
+      }
+    }
   }
 `
 
 const StyledBaner = styled.div`
-  background-image: url(${({ bg }) => bg});
+  background-image: url(${({ theme }) => theme.bg || "#222222"});
   /* background-image: url(${config.bg}); */
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: calc(100%);
   height: 230px;
 `
 function Header() {
@@ -78,7 +84,7 @@ function Header() {
           alt="foto-perfil"
         />
         <div>
-          <h2>{config.name}</h2>
+          <a href={`https://github.com/${config.github}`} target="_blank"><h2>{config.name}</h2></a>
           <p>{config.job}</p>
         </div>
       </section>
