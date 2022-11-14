@@ -27,4 +27,3 @@ O principal objetivo do projeto foi aprofundar mais nossos conhecimentos em Reac
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/1acrju7CLwHkSh6e7xEk9h/Aluratube?t=f4jnIW2E4UWGxVZ7-6). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
-Feito pela: [Alura](https://www.alura.com.br/)
