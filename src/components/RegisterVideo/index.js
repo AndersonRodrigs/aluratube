@@ -1,16 +1,22 @@
 import React from "react"
-import { StyledRegisterVideo } from "./Styles"
+import { StyledRegisterVideo } from "./styles"
+import { createClient } from "@supabase/supabase-js"
 
-function userForm(propsDoForm) {
+// Whiteboarding
+// Custom Hook
+function useForm(propsDoForm) {
   const [values, setValues] = React.useState(propsDoForm.initialValues)
 
   return {
     values,
-    handleChange: e => {
-      const value = e.target.value
-      const name = e.target.value
-      console.log(value)
-      setValues({ ...value, [name]: value })
+    handleChange: evento => {
+      console.log(evento.target)
+      const value = evento.target.value
+      const name = evento.target.name
+      setValues({
+        ...values,
+        [name]: value
+      })
     },
     clearForm() {
       setValues({})
@@ -18,11 +24,24 @@ function userForm(propsDoForm) {
   }
 }
 
+const PROJECT_URL = "https://mnyfguhijmyqgnryzajf.supabase.co"
+const PUBLIC_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ueWZndWhpam15cWducnl6YWpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzNzM3NTEsImV4cCI6MTk4Mzk0OTc1MX0.rVigPZxkzGjNuj2bC-pc8ZbUZFrSNKEsZgjbx6krwPM"
+const supabase = createClient(PROJECT_URL, PUBLIC_KEY)
+
+// get youtube thumbnail from video url
+function getThumbnail(url) {
+  return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`
+}
+
 export default function RegisterVideo() {
-  const formCadastro = userForm({
-    initialValues: { titulo: "Frost punk", url: "https//yotube..." }
+  const formCadastro = useForm({
+    initialValues: {
+      titulo: "",
+      url: ""
+    }
   })
-  const [formVisivel, setFormVisivel] = React.useState(true)
+  const [formVisivel, setFormVisivel] = React.useState(false)
 
   return (
     <StyledRegisterVideo>
@@ -31,8 +50,26 @@ export default function RegisterVideo() {
       </button>
       {formVisivel ? (
         <form
-          onSubmit={e => {
-            e.preventDefault()
+          onSubmit={evento => {
+            evento.preventDefault()
+            console.log(formCadastro.values)
+
+            // Contrato entre o nosso Front e o BackEnd
+            supabase
+              .from("video")
+              .insert({
+                title: formCadastro.values.titulo,
+                url: formCadastro.values.url,
+                thumb: getThumbnail(formCadastro.values.url),
+                playlist: "videos"
+              })
+              .then(oqueveio => {
+                console.log(oqueveio)
+              })
+              .catch(err => {
+                console.log("Err")
+              })
+
             setFormVisivel(false)
             formCadastro.clearForm()
           }}
@@ -46,14 +83,14 @@ export default function RegisterVideo() {
               X
             </button>
             <input
-              name="titulo"
               placeholder="Titulo do vídeo"
+              name="titulo"
               value={formCadastro.values.titulo}
               onChange={formCadastro.handleChange}
             />
             <input
-              name="URL"
-              placeholder="url"
+              placeholder="URL"
+              name="url"
               value={formCadastro.values.url}
               onChange={formCadastro.handleChange}
             />

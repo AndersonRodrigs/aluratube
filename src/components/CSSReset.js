@@ -8,23 +8,23 @@ export const CSSReset = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
+    width: 100%;
     font-family: sans-serif;
     background-color: ${({theme}) => theme.backgroundBase};
     color: ${({theme}) => theme.textColorBase};
   }
-  /* NextJS */
+   /* NextJS */
   html {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-  }
-  body {
-    display: flex;
-    flex: 1;
-  }
-  #__next {
-    display: flex;
-    flex: 1;
+    /* body {
+      display: flex;
+      flex: 1;
+    }
+    #__next {
+      display: flex;
+      flex: 1;
+    }  */
   }
   /* Globals */
   button,

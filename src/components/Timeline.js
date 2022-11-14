@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledTimeline = styled.div`
   flex: 1;
   width: 100%;
   padding: 16px;
   overflow: hidden;
+
   h2 {
     font-size: 16px;
     margin-bottom: 16px;
@@ -22,15 +23,29 @@ export const StyledTimeline = styled.div`
     width: 100%;
     padding: 0;
     overflow: hidden;
-    padding: 16px;
+    padding: 16px 0;
+
     div {
+
+      ::-webkit-scrollbar {
+        height: 10px;
+      }
       
-      width: calc(100vw - 16px * 4);
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: ${({ theme }) => theme.backgroundLevel1 || "#222222"};
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: ${({ theme }) => theme.borderBase || "#222222"};
+      }
+      width:100vw;
       display: grid;
       grid-gap: 16px;
-      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-auto-flow: column;
-      grid-auto-columns: minmax(200px,1fr);
+      grid-auto-columns: minmax(200px, 1fr);
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       a {
@@ -44,4 +59,4 @@ export const StyledTimeline = styled.div`
       }
     }
   }
-`;
+`
