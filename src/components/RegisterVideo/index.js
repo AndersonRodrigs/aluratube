@@ -1,5 +1,5 @@
 import React from "react"
-import { StyledRegisterVideo } from "./styles"
+import { StyledRegisterVideo } from "./Styles"
 import { createClient } from "@supabase/supabase-js"
 
 // Whiteboarding
