@@ -23,6 +23,7 @@ Projeto feito na imersão React da Alura, onde construímos o AluraTube, uma pá
 
 O principal objetivo do projeto foi aprofundar mais nossos conhecimentos em React, criando um projeto do zero com a tecnologia. 
 
+[Ver projeto](https://aluratube-puce.vercel.app/)
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/1acrju7CLwHkSh6e7xEk9h/Aluratube?t=f4jnIW2E4UWGxVZ7-6). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
