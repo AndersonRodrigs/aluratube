@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Menu from "../src/components/Menu"
 import { StyledTimeline } from "../src/components/Timeline"
 import { videoService } from "../src/services/videoService"
+import { StyledFavoritos } from "../src/components/FavoritosArea"
 
 function HomePage() {
   const service = videoService()
@@ -34,6 +35,7 @@ function HomePage() {
         />
         <Header />
         <Timeline searchValue={valorDoFiltro} playlists={config.playlists} />
+        <Favorites searchValue={valorDoFiltro} playlists={config.favoritos}/>
       </div>
     </>
   )
@@ -103,7 +105,7 @@ function Timeline({ searchValue, ...props }) {
                 })
                 .map(video => {
                   return (
-                    <a key={video.url} href={video.url}>
+                    <a key={video.url} href={video.url} target="_blank">
                       <img src={video.thumb} />
                       <span>{video.title}</span>
                     </a>
@@ -114,5 +116,34 @@ function Timeline({ searchValue, ...props }) {
         )
       })}
     </StyledTimeline>
+  )
+}
+
+function Favorites({ searchValue, ...props }) {
+  const favoritesNomes = Object.keys(props.playlists)
+
+  return (
+    <StyledFavoritos>
+      {favoritesNomes.map(favoritesName => {
+        const nomes = props.playlists[favoritesName]
+        return (
+          <section key={favoritesName}>
+            <h2>{favoritesNomes}</h2>
+            <div>
+              {nomes.map(nome => {
+                return (
+                  <a key={nome.url} href={nome.url} target="_blank">
+                  <img src={nome.image}/>
+                  <span>
+                    {nome.nome}
+                  </span>
+                </a>
+                )
+              })}
+            </div>
+          </section>
+        )
+      })}
+    </StyledFavoritos>
   )
 }

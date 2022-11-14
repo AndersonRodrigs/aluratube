@@ -3,6 +3,27 @@
   "name": "Anderson Rodrigues",
   "job": "Densenvolvedor Front-End",
   "github": "AndersonRodrigs",
+  "favoritos":{
+    "AluraTubes Favoritos":[
+        {
+            "nome":"paulo silveira",
+            "image": "https://avatars.githubusercontent.com/u/71636?v=4",
+            "url":"https://github.com/peas"
+        },
+        {
+            "nome":"mario souto",
+            "image": "https://avatars.githubusercontent.com/u/13791385?v=4",
+            "url":"https://github.com/omariosouto"
+
+        },
+        {
+            "nome":"Nay",
+            "image": "https://avatars.githubusercontent.com/u/74972233?v=4",
+            "url":"https://github.com/NayanneBatista"
+
+        }
+    ]
+  },
   "playlists": {
       "jogos": [
           {
